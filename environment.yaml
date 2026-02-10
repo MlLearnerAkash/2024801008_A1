@@ -1,0 +1,11 @@
+name: inlp_assignment1_310
+channels:
+  - defaults
+dependencies:
+  - python=3.10
+  - pip
+  - pip:
+    - regex
+    - numpy
+    - matplotlib
+    - scikit-learn
