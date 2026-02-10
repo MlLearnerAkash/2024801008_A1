@@ -1,0 +1,1 @@
+1. python tokenizers.py --mode {corpus_clean,tokenization} --tokenizer {WhitespaceTokenizer, RegexTokenizer, BPETokenizer} --input dataset/corpora/cc100_{en, mn}.jsonl --output dataset/corpora/partitions/mongolean --train_ratio 0.8 --val_ratio 0.1 --test_ratio 0.1
