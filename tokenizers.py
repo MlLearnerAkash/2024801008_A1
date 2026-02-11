@@ -53,8 +53,8 @@ def partition_corpus(input_path, output_dir, train_ratio=0.8, val_ratio=0.1, tes
             if count % 1000 == 0:
                 logging.info(f"Processed {count} lines so far...")
                 #NOTE: For dev
-                if count>10000:
-                    break
+                # if count>10000:
+                #     break
     logging.info(f"Total lines processed: {count}")
     total = len(lines)
     indices = list(range(total))

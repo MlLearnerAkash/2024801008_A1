@@ -91,13 +91,17 @@ def load_sentences(path):
     with open(path, 'r', encoding='utf-8') as f:
         return [line.strip() for line in f if line.strip()]
 
-def get_tokenizer(name):
+def get_tokenizer(name, train_path):
     if name == "whitespace":
         return WhitespaceTokenizer()
     elif name == "regex":
-        return RegexTokenizer()
+        return RegexTokenizer(r"\w+(?:'\w+)?|[^\w\s]")
     elif name == "bpe":
-        return BPETokenizer()
+        tokenizer = BPETokenizer()
+        with open(train_path, 'r', encoding='utf-8') as f_train:
+                train_corpus = [line.strip() for line in f_train if line.strip()]
+        tokenizer.fit(train_corpus)
+        return tokenizer
     else:
         raise ValueError("Unknown tokenizer")
 
@@ -113,7 +117,7 @@ def main():
     # Load and tokenize data
     train_sents = load_sentences(args.train)
     test_sents = load_sentences(args.test)
-    tokenizer = get_tokenizer(args.tokenizer)
+    tokenizer = get_tokenizer(args.tokenizer, args.train)
     train_tokens = [tokenizer.tokenize(sent) for sent in train_sents]
     test_tokens = [tokenizer.tokenize(sent) for sent in test_sents]
 
