@@ -130,10 +130,10 @@ def main():
     print(f"Perplexity ({args.tokenizer}, {args.smoothing}): {ppl:.3f}")
 
     # # Sentence completion
-    # prompt_tokens = tokenizer.tokenize(args.prompt)
-    # completed = lm.complete_sentence(prompt_tokens)
-    # print("Prompt:", args.prompt)
-    # print("Completed:", " ".join(completed))
+    prompt_tokens = tokenizer.tokenize(args.prompt)
+    completed = lm.complete_sentence(prompt_tokens)
+    print("Prompt:", args.prompt)
+    print("Completed:", " ".join(completed))
 
 if __name__ == '__main__':
     main()
